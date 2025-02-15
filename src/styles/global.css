@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@theme {
+  --color-indigo: oklch(26.53% 0.1502 278.05); /* #1d096b */
+  --color-pink: oklch(82.94% 0.1209 30.54); /* #feaa9b */
+
+  --font-sans: "Mulish", "sans-serif";
+  --font-mono: "Space Mono", "monospace";
+}
