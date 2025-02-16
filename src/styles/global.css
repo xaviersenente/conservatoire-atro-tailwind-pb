@@ -6,6 +6,8 @@
 
   --font-sans: "Mulish", "sans-serif";
   --font-mono: "Space Mono", "monospace";
+
+  --my-grid: repeat(12, minmax(0, 64px));
 }
 
 @layer base {
@@ -23,5 +25,11 @@
   }
   ::selection {
     @apply bg-(--color-pink);
+  }
+}
+
+@layer components {
+  .grille {
+    @apply px-6 lg:grid lg:grid-cols-(--my-grid) lg:justify-center lg:gap-12;
   }
 }

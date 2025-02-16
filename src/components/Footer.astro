@@ -1,0 +1,61 @@
+---
+import LogoFooter from '../assets/icones/icon_logoFooter.svg';
+import LogoGrandBelfort from '../assets/icones/logo-grand-belfort.svg';
+import IconFacebook from '../assets/icones/icon_facebook.svg';
+import IconInstagram from '../assets/icones/icon_instagram.svg';
+import IconTwitter from '../assets/icones/icon_twitter.svg';
+import IconYoutube from '../assets/icones/icon_youtube.svg';
+---
+
+<footer class="grille space-y-6 text-sm bg-stone-900 py-16 px-6 text-white lg:space-y-0">
+  <a class="block" href="/" aria-label="Accueil">
+    <LogoFooter/>
+  </a>
+  
+  <nav class="space-y-3 lg:col-span-3 lg:col-start-7">
+    <h3 class="uppercase text-sm tracking-wide text-stone-400">Menu</h3>
+    <ul>
+      <li><a href="/agenda">Agenda</a></li>
+      <li><a href="/contact">Contact et accès</a></li>
+    </ul>
+  </nav>
+
+  <div class="space-y-3 lg:col-span-3 lg:col-start-10">
+    <h3 class="uppercase text-sm tracking-wide text-stone-400">Contact</h3>
+    <address class="not-italic">
+      1 rue Paul Koepfler<br />90000 Belfort<br />
+      <a href="tel:0384542727">03 84 54 27 27</a><br />
+      <a href="mailto:conservatoire@agglo-belfort.fr">conservatoire@agglo-belfort.fr</a>
+    </address>
+  </div>
+
+  <div class="lg:col-span-3 lg:col-start-7">
+    <LogoGrandBelfort/>
+  </div>
+
+  <div class="space-y-3 lg:col-span-3 lg:col-start-10">
+    <h3 class="uppercase text-sm tracking-wide text-stone-400">Nous suivre</h3>
+    <ul class="flex gap-4">
+      <li>
+        <a href="https://facebook.com" aria-label="facebook">
+          <IconFacebook class="fill-white"/>
+        </a>
+      </li>
+      <li>
+        <a href="https://instagram.com" aria-label="instagram">
+          <IconInstagram class="fill-white"/>
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com" aria-label="twitter">
+          <IconTwitter class="fill-white"/>
+        </a>
+      </li>
+      <li>
+        <a href="https://youtube.com" aria-label="youtube">
+          <IconYoutube class="fill-white"/>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>

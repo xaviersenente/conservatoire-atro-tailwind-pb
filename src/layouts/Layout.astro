@@ -3,6 +3,8 @@ import '../styles/global.css';
 import '@fontsource/space-mono/400.css';
 import '@fontsource-variable/mulish/wght-italic.css';
 
+import Footer from '../components/Footer.astro';
+
 const { title, description, image = "/screenshot.jpg" } = Astro.props;
 
 const baseUrl = "https://www.example.com";
@@ -54,5 +56,6 @@ const siteName = "Conservatoire Henri Dutilleux";
     <main>
       <slot/>
     </main>
+		<Footer/>
 	</body>
 </html>
