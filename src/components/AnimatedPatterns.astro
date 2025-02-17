@@ -1,0 +1,24 @@
+---
+import Patterns from '../assets/icones/patterns.svg'
+---
+<Patterns/>
+
+<script>
+  const lines = document.querySelectorAll(".curveLines path");
+  if(lines) {
+    lines.forEach(function (el, key) {
+      el.style.strokeDasharray = el.getTotalLength().toString();
+      el.animate(
+        [
+          { strokeDashoffset: el.getTotalLength(), opacity: 0 },
+          { strokeDashoffset: 0, opacity: 1 },
+        ],
+        {
+          duration: 1000,
+          delay: key * 200,
+          fill: "backwards",
+        }
+      );
+    });
+  }
+</script>

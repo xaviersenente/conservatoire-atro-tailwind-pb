@@ -1,10 +1,44 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutWithHero from '../layouts/LayoutWithHero.astro';
+import IconMusique from '../assets/icones/icon_musique.svg';
+import IconTheatre from '../assets/icones/icon_theatre.svg';
+import IconDanse from '../assets/icones/icon_danse.svg';
+import Patterns from '../components/AnimatedPatterns.astro';
+
+import imgHero from '../assets/img/agenda-musique-06.jpg'
+
+const title = "Conservatoire Henri Dutilleux";
+const subTitle = "Conservatoire à Rayonnement Départemental du Grand Belfort";
+const description = "Le Conservatoire Henri Dutilleux de Belfort vous accueille pour découvrir la musique, la danse et le théâtre.";
 ---
 
-<Layout>
-	<h1>Conservatoire Henri Dutilleux</h1>
-	<h2>Titre de niveau 2</h2>
-	<h3>Titre de niveau 3</h3>
-	<p class="h-screen">Texte standard</p>
-</Layout>
+<LayoutWithHero title={title} description={description} subTitle={subTitle} src={imgHero} alt="Violoncelliste" classContent="">
+	<nav class="flex-1 font-mono lg:text-3xl" slot="chapo">
+    <ul class="grid grid-cols-3 gap-12">
+      <li>
+        <a class="flex flex-col items-center gap-4 lg:flex-row" href="#">
+          <IconMusique/>
+          Musique
+        </a>
+      </li>
+      <li>
+        <a class="flex flex-col items-center gap-4 lg:flex-row" href="#">
+          <IconTheatre/>
+          Théâtre
+        </a>
+      </li>
+      <li>
+        <a class="flex flex-col items-center gap-4 lg:flex-row" href="#">
+          <IconDanse/>
+          Danse
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="absolute inset-0 z-0 flex items-center justify-end overflow-hidden stroke-(--color-pink) stroke-24 opacity-80 mix-blend-difference" slot="patterns">
+    <Patterns class="-ml-60 -mr-[2vw] lg:ml-auto lg:w-[96vw]"/>
+  </div>
+  <Fragment slot="content">
+	  <p>Contenu principal de la page</p>
+  </Fragment>
+</LayoutWithHero>
