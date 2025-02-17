@@ -1,0 +1,32 @@
+---
+import LayoutWithHero from '../layouts/LayoutWithHero.astro';
+import imgHero from '../assets/img/crd-ext-02.jpg';
+import imgContent from '../assets/img/agenda-musique-06.jpg';
+import { Picture } from 'astro:assets';
+
+const title = "Le conservatoire";
+const description = "Le CRD accueille de nombreuses associations instrumentales et vocales : orchestres d’harmonie, chorales, ensembles vocaux, ensembles de musique traditionnelle.";
+---
+<LayoutWithHero title={title} description={description} src={imgHero} alt="Conservatoire Henri Dutilleux">
+	<p slot="chapo">
+		Réparti sur 9 sites d’enseignement, le CRD compte plus de 1 500 élèves, 84 enseignants.
+		Environ 50 disciplines sont proposées en musique, danse et théâtre.
+	</p>
+	<div slot="content">
+    <p>Le CRD accueille de nombreuses associations instrumentales et vocales : orchestres d’harmonie, chorales, ensembles vocaux, ensembles de musique traditionnelle. De nombreux partenariats sont développés pour accompagner les projets de diffusion.</p>
+		<h2>L'éducation artistique et culturelle</h2>
+    <p>Depuis de très nombreuses années, les enfants belfortains bénéficient d’un enseignement musical scolaire assuré par des intervenants intégrés au fonctionnement du Conservatoire. Ces enseignants sont spécialement formés pour intégrer le projet éducatif des écoles primaires, en lien étroit avec les enseignants de l’Education Nationale. Ensemble, ils élaborent le projet musical de la classe, souvent lié aux objectifs pédagogiques du Conservatoire.</p>
+    <p>Les projets sont source de rayonnement musical sur le quartier où est implantée l’école.</p>
+    <p>Le département pédagogique d’Enseignement Musical Scolaire (E.M.S.) du Conservatoire concerne ainsi tous les élèves des écoles primaires publiques de la Ville de Belfort. L’équipe compte huit intervenants et une chargée de mission.</p>
+    <p>Pour accompagner les enfants sur des parcours longs, le Conservatoire propose également des classes à horaires aménagés musicales.</p>
+    <figure>
+      <Picture src={imgContent} alt="violoncelles"/>
+      <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fringilla gravida enim eget ullamcorper</figcaption>
+    </figure>
+    <h2>La diffusion</h2>
+    <p>Le projet du CRD est de favoriser la rencontre entre les différentes pratiques artistiques et les différentes esthétiques, la création et les expériences artistiques.</p>
+    <p>A travers les huit sites du Conservatoire, des salles aux multiples capacités d’accueil permettent la diffusion sous toutes ses formes : conférences, auditions, concerts. Le CRD s’appuie sur des structures plus adaptées pour les manifestations plus importantes ou spécifiques à la danse et au théâtre (Maison du Peuple, Salles des fêtes des communes du Grand Belfort, Espace Louis Jouvet, Théâtre Granit, CCNFCB etc… ).</p>
+    <p>Le Conservatoire intègre également dans son projet artistique le nouvel ensemble Confluences qui permet la rencontre et des échanges entre les professionnels et les élèves en cycle d’orientation professionnelle. Cette démarche permet d’aborder des programmes ambitieux et exigeants autour d’œuvres de toutes esthétiques favorisant la découverte à destination du grand public.</p>
+  
+	</div>
+</LayoutWithHero>

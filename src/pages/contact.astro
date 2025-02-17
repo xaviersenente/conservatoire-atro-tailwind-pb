@@ -1,0 +1,28 @@
+---
+import LayoutWithHero from '../layouts/LayoutWithHero.astro';
+import imgHero from '../assets/img/page-contact.jpg';
+
+const title = "Contact";
+const description = "Le Conservatoire Henri Dutilleux de Belfort vous accueille pour découvrir la musique, la danse et le théâtre.";
+---
+<LayoutWithHero title={title} description={description} src={imgHero} alt="Hall du conservatoire">
+	<p slot="chapo">Le Conservatoire Henri Dutilleux de Belfort vous accueille pour découvrir la musique, la danse et le théâtre. Pour toute information, n'hésitez pas à nous contacter via les informations ci-dessous.</p>
+	<div slot="content">
+		<h3>Accueil- information</h3>
+		<address>
+			1 rue Paul Koepfler - 90000 Belfort<br>
+			Tél. 03 84 54 27 27<br>
+			Courriel : conservatoire@grandbelfort.fr<br>
+			Directeur : Philippe Barthod<br>
+		</address>
+
+		<h3>Horaires d'ouverture</h3>
+		<p>Service scolarité : Du lundi au vendredi, de 9h à 12h et de 14h à 18h</p>
+		<p>Fermeture pendant les vacances de Noël, la dernière semaine de juillet et le mois d'août.</p>
+
+		<h3>Ouverture du bâtiment</h3>
+		<p>Périodes scolaires : du lundi au vendredi de 8h à 22h, samedi de 8h30 à 17h30</p>
+		<p>Vacances scolaires : du lundi au vendredi, de 9h à 12h  et de 14h à 17h</p>
+		<p>Fermeture pendant les vacances de Noël, la dernière semaine du mois de juillet et le mois d'août.</p>
+	</div>
+</LayoutWithHero>

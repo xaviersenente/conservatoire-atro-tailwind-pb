@@ -1,0 +1,17 @@
+---
+import LayoutWithHero from '../../layouts/LayoutWithHero.astro';
+import imgHero from '../../assets/img/agenda-musique-09.jpg';
+
+const title = "Agenda";
+const description = "Lieu de création artistique, le conservatoire propose régulièrement des actions culturelles ouvertes à tous.";
+---
+
+<LayoutWithHero title={title} description={description} src={imgHero} alt="Orchestre de musique classique" classContent="">
+  <p slot="chapo">
+    Lieu de création artistique, le conservatoire propose régulièrement des actions culturelles ouvertes à tous.
+  </p>
+
+  <Fragment slot="content">
+    Emplacement des futures Cards
+  </Fragment>
+</LayoutWithHero>

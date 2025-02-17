@@ -1,0 +1,35 @@
+---
+import LayoutWithHero from '../layouts/LayoutWithHero.astro';
+import imgHero from '../assets/img/page-inscription.jpg';
+
+const title = "S'inscrire";
+const description = "Les inscriptions sont ouvertes à partir de la journée portes ouvertes (mi-mai) jusqu'au 15 septembre.";
+---
+<LayoutWithHero title={title} description={description} src={imgHero} alt="Danseuse">
+	<p slot="chapo">Les inscriptions sont ouvertes à partir de la journée portes ouvertes (mi-mai) jusqu'au 15 septembre.</p>
+	<div slot="content">
+		<p>Pour toute  inscription, merci de remplir le formulaire ci-dessous. Un justificatif sur le revenu imposable vous sera demandé ultérieurement au moment de la facturation.</p>
+		<h3>Musique</h3>
+		<ul>
+			<li>Jardin musique et danse : à partir de 4 ans</li>
+			<li>Eveil musical : avoir 6 ans et être inscrit en CP à la rentrée de septembre. 45 min par semaine</li>
+			<li>
+				Instrument : à partir de 7 ans (dans l’année civile). 30 min de cours individuel d’instrument + 1h15 de formation musicale + 45 min de chorale par semaine
+				Chant et chant musiques actuelles : à partir de 15 ans sur test d’entrée en septembre
+			</li>
+		</ul>
+		<h3>Danse contemporaine</h3>
+		<ul>
+			<li>Jardin musique et danse : à partir de 4 ans</li>
+			<li>Eveil artistique (5 ans) et initiation (6 ans) : 1 cours d’1h par semaine</li>
+			<li>A partir de 8 ans : 2 cours de danse d’1h par semaine + 1 cours de formation musicale d’1h par semaine</li>
+		</ul>
+		<h3>Théâtre</h3>
+		<ul>
+			<li>Eveil (8-11 ans) : Renseignements et inscriptions au théâtre Granit</li>
+			<li>A partir de 12 ans : inscriptions au conservatoire</li>
+			<li>De 12 à 14 ans : 1 cours de 2h par semaine</li>
+			<li>A partir de 15 ans et en fonction de la pratique théâtrale antérieure : 1 cours de 3h par semaine.</li>
+		</ul>
+	</div>
+</LayoutWithHero>
