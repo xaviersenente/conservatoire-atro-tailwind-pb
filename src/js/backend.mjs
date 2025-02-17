@@ -7,6 +7,9 @@ const POCKETBASE_URL = "http://127.0.0.1:8090";
 // Création de l'instance PocketBase avec l'URL définie plus haut
 const pb = new PocketBase(POCKETBASE_URL);
 
+// Exportation de l'instance PocketBase pour l'utiliser dans d'autres fichiers
+export { pb };
+
 // Fonction pour récupérer tous les événements de la collection spécifiée (par défaut "events")
 // Utilise la méthode `getFullList` de PocketBase qui renvoie tous les éléments de la collection
 export async function getEvents(collection = "events") {
