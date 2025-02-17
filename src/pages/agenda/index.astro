@@ -1,5 +1,6 @@
 ---
 import LayoutWithHero from '../../layouts/LayoutWithHero.astro';
+import Card from '../../components/Card.astro';
 import imgHero from '../../assets/img/agenda-musique-09.jpg';
 
 import { getEvents } from '../../js/backend.mjs';
@@ -19,7 +20,7 @@ const description = "Lieu de création artistique, le conservatoire propose rég
     <div class="grille my-24">
       {events.length > 0 ? (
         events.map(event => 
-          <p class="col-span-4">{event.title}</p>
+          <Card {...event} />
         )
       ) : (
         <p class="col-span-4">Aucun événement à afficher.</p>
