@@ -1,0 +1,59 @@
+---
+import LayoutWithHero from '../../layouts/LayoutWithHero.astro';
+import Card from '../../components/Card.astro';
+import imgHero from '../../assets/img/agenda-musique-09.jpg';
+
+import { getNextEvents } from '../../js/backend.mjs';
+
+const title = "Agenda";
+const description = "Lieu de création artistique, le conservatoire propose régulièrement des actions culturelles ouvertes à tous.";
+
+const ITEMS_PER_PAGE = 6;
+const currentPage = Math.max(1, Number(Astro.params.page || 1));
+
+const { events, totalItems } = await getNextEvents(currentPage, ITEMS_PER_PAGE);
+const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+
+const prevPage = currentPage > 1 ? `/agenda/${currentPage - 1}` : null;
+const nextPage = currentPage < totalPages ? `/agenda/${currentPage + 1}` : null;
+---
+
+<LayoutWithHero title={title} description={description} src={imgHero} alt="Orchestre de musique classique" classContent="">
+  <p slot="chapo">
+    Lieu de création artistique, le conservatoire propose régulièrement des actions culturelles ouvertes à tous.
+  </p>
+
+  <Fragment slot="content">
+    <div class="grille my-24">
+      {events.length > 0 ? (
+        events.map(event => 
+          <Card {...event} />
+        )
+      ) : (
+        <p class="col-span-4">Aucun événement à afficher.</p>
+      )}
+    </div>
+    {totalPages > 1 && (
+      <nav class="flex justify-center items-center space-x-4 my-8 uppercase">
+        {prevPage && <a href={prevPage}>Précédent</a>}
+
+        <div class="flex space-x-2">
+          {Array.from({ length: totalPages }, (_, index) => {
+            const pageNum = index + 1;
+            return (
+              <a
+                href={`/agenda/${pageNum}`}
+                class={`block border border-transparent rounded-full flex items-center justify-center h-12 w-12 ${pageNum === currentPage ? '!border-gray-300' : ''}`}
+                aria-current={pageNum === currentPage ? 'page' : undefined}
+              >
+                {pageNum}
+              </a>
+            );
+          })}
+        </div>
+
+        {nextPage && <a href={nextPage}>Suivant</a>}
+      </nav>
+    )}
+  </Fragment>
+</LayoutWithHero>

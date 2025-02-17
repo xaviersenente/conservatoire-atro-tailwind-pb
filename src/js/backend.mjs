@@ -24,6 +24,45 @@ export async function getEvents(collection = "events") {
   }
 }
 
+// Fonction pour récupérer les prochains événements à partir d'une collection, avec pagination
+// Prend en paramètre `page`, `perPage` et `collection` (par défaut "events")
+export async function getNextEvents(
+  page = 1,
+  perPage = 6,
+  collection = "events"
+) {
+  try {
+    // Crée un objet Date représentant la date d'aujourd'hui
+    const today = new Date();
+    // Réinitialise l'heure à 00:00:00 (pour ne pas inclure d'événements passés)
+    today.setHours(0, 0, 0, 0);
+
+    // Récupère les événements de la collection spécifiée, en les filtrant par date
+    // Le filtre assure que seuls les événements à partir d'aujourd'hui sont renvoyés
+    // Le tri est effectué par date croissante
+    const { items, totalItems } = await pb
+      .collection(collection)
+      .getList(page, perPage, {
+        filter: `date >= "${today.toISOString()}"`, // Filtre basé sur la date actuelle
+        sort: "+date", // Tri croissant des événements par date
+      });
+
+    // Retourne les événements récupérés ainsi que le nombre total d'éléments
+    return {
+      events: items,
+      totalItems,
+    };
+  } catch (error) {
+    // Si une erreur survient lors de la récupération des événements, elle est loguée dans la console
+    console.error(
+      "Erreur lors de la récupération des prochains événements :",
+      error
+    );
+    // Retourne un objet avec un tableau vide d'événements et totalItems égal à 0 en cas d'échec
+    return { events: [], totalItems: 0 };
+  }
+}
+
 try {
   //debugger
   const events = await getEvents();
