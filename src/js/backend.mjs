@@ -63,10 +63,18 @@ export async function getNextEvents(
   }
 }
 
-try {
-  //debugger
-  const events = await getEvents();
-  console.log(events);
-} catch (e) {
-  console.error(e);
+// Fonction pour récupérer un événement spécifique par son ID
+// Prend en paramètre `id` (l'identifiant de l'événement) et `collection` (par défaut "events")
+export async function oneEvent(id, collection = "events") {
+  try {
+    // Récupère un seul événement à partir de son ID dans la collection spécifiée
+    const event = await pb.collection(collection).getOne(id);
+    // Retourne l'événement récupéré
+    return event;
+  } catch (error) {
+    // Si une erreur survient lors de la récupération de l'événement, elle est loguée dans la console
+    console.error("Erreur lors de l'événements :", error);
+    // Retourne un tableau vide en cas d'échec
+    return [];
+  }
 }
