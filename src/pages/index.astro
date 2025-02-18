@@ -5,8 +5,15 @@ import IconTheatre from '../assets/icones/icon_theatre.svg';
 import IconDanse from '../assets/icones/icon_danse.svg';
 import Patterns from '../components/AnimatedPatterns.astro';
 import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import { Picture } from 'astro:assets';
 
-import imgHero from '../assets/img/agenda-musique-06.jpg'
+import imgHero from '../assets/img/agenda-musique-06.jpg';
+import imgCrdInt from '../assets/img/crd-int-01.jpg';
+import imgCrdExt from '../assets/img/crd-ext-01.jpg';
+
+import { getNextEvents } from '../js/backend.mjs';
+const { events } = await getNextEvents(1, 3);
 
 const title = "Conservatoire Henri Dutilleux";
 const subTitle = "Conservatoire à Rayonnement Départemental du Grand Belfort";
@@ -40,9 +47,87 @@ const description = "Le Conservatoire Henri Dutilleux de Belfort vous accueille 
     <Patterns class="-ml-60 -mr-[2vw] lg:ml-auto lg:w-[96vw]"/>
   </div>
   <Fragment slot="content">
-	  <Button href="/conservatoire" text="En savoir plus"/>
-    <div class="bg-black p-20">
-      <Button href="/conservatoire" text="En savoir plus" variant="outlined"/>
-    </div>
+	  <section class="grille my-24 space-y-8 lg:grid-rows-2 lg:space-y-0">
+      <Picture 
+        src={imgCrdInt} 
+        alt="Salle de musique du conservatoire"
+        formats={['avif', 'webp']}
+        pictureAttributes={{ class: "lg:col-span-7 lg:col-start-1 lg:row-span-2 lg:row-start-1" }}
+      />
+      <header
+        class="space-y-8 bg-white lg:col-span-7 lg:col-start-6 lg:row-span-1 lg:row-start-1 lg:p-16"
+      >
+        <h2 class="text-xl italic leading-normal lg:text-3xl">
+          Découvrez le Conservatoire, ses enseignements, ses équipes dans un nouveau lieu dédié à la
+          culture artistique.
+        </h2>
+        <Button href="/conservatoire" text="Plus d'info" />
+      </header>
+
+      <ul class="grid grid-cols-2 gap-12 lg:col-span-4 lg:col-start-9 lg:row-start-2">
+        <li>
+          <span class="block text-4xl text-[#e86f59] lg:text-6xl">9</span>
+          <span>sites</span>
+        </li>
+        <li>
+          <span class="block text-4xl text-[#e86f59] lg:text-6xl">84</span>
+          <span>enseignants</span>
+        </li>
+        <li>
+          <span class="block text-4xl text-[#e86f59] lg:text-6xl">1500</span>
+          <span>élèves</span>
+        </li>
+        <li>
+          <span class="block text-4xl text-[#e86f59] lg:text-6xl">50</span>
+          <span>disciplines</span>
+        </li>
+      </ul>
+    </section>
+
+    <section
+      class="grille space-y-8 py-24 lg:before:col-span-2 lg:before:col-start-1 lg:before:mt-12 lg:before:h-[1px] lg:before:bg-black"
+    >
+      <header class="space-y-6 lg:col-span-6 lg:col-start-3">
+        <h2 class="text-4xl lg:text-6xl">Agenda</h2>
+        <p class="text-xl leading-normal lg:text-3xl">
+          Lieu de création artistique, le conservatoire propose régulièrement des actions culturelles
+          ouvertes à tous.
+        </p>
+      </header>
+      <Button href="/agenda" text="Tous les évènements" classes="lg:col-span-4 lg:col-start-9 lg:self-start lg:justify-self-end"/>
+      {events.length > 0 ? (
+        events.map(event => (
+          <Card {...event}/>
+        ))
+      ) : (
+        <p>Aucun événement à afficher.</p>
+      )}
+    </section>
+
+    <section
+      class="grille relative space-y-8 py-54 text-white lg:before:col-span-2 lg:before:col-start-1 lg:before:mt-12 lg:before:h-[1px] lg:before:bg-white"
+    >
+      <header class="space-y-6 lg:col-span-6 lg:col-start-3">
+        <h2 class="text-4xl lg:text-6xl">Inscriptions</h2>
+        <p class="text-xl leading-normal lg:text-3xl">
+          Vous êtes désireux d'entrer au conservatoire ? Vous trouverez ici toutes les informations
+          sur les modalités d'inscriptions.
+        </p>
+      </header>
+      <Button
+        classes="lg:col-span-4 lg:col-start-9 lg:self-start lg:justify-self-end"
+        href="/inscription"
+        text="S'inscrire"
+        variant="outlined"
+      />
+      <Picture 
+        pictureAttributes={{ class: "duotone absolute z-[-1] inset-0 object-cover after:absolute after:inset-0 after:bg-(--color-indigo) after:opacity-50" }}
+        src={imgCrdExt} 
+        alt="Façade Est du conservatoire avec des pins devant"
+        formats={['avif', 'webp']}
+        widths={[540, 1024, imgCrdExt.width]}
+        sizes={`(max-width: 540px) 540px, (max-width: 1024px) 1024px, ${imgCrdExt.width}px`}
+      />
+    </section>
   </Fragment>
 </LayoutWithHero>
