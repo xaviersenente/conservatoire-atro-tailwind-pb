@@ -4,6 +4,7 @@ import IconMusique from '../assets/icones/icon_musique.svg';
 import IconTheatre from '../assets/icones/icon_theatre.svg';
 import IconDanse from '../assets/icones/icon_danse.svg';
 import Patterns from '../components/AnimatedPatterns.astro';
+import Button from '../components/Button.astro';
 
 import imgHero from '../assets/img/agenda-musique-06.jpg'
 
@@ -39,6 +40,9 @@ const description = "Le Conservatoire Henri Dutilleux de Belfort vous accueille 
     <Patterns class="-ml-60 -mr-[2vw] lg:ml-auto lg:w-[96vw]"/>
   </div>
   <Fragment slot="content">
-	  <p>Contenu principal de la page</p>
+	  <Button href="/conservatoire" text="En savoir plus"/>
+    <div class="bg-black p-20">
+      <Button href="/conservatoire" text="En savoir plus" variant="outlined"/>
+    </div>
   </Fragment>
 </LayoutWithHero>
