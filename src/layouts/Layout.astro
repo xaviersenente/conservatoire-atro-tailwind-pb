@@ -6,11 +6,13 @@ import '@fontsource-variable/mulish/wght-italic.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const { title, description, image = "/screenshot.jpg" } = Astro.props;
+const { description, image = "/screenshot.jpg" } = Astro.props;
 
 const baseUrl = "https://www.example.com";
 const pageUrl = `${baseUrl}${Astro.url.pathname}`;
 const siteName = "Conservatoire Henri Dutilleux";
+
+const title = Astro.url.pathname === "/" ? siteName : `${Astro.props.title} — ${siteName}`;
 ---
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +22,7 @@ const siteName = "Conservatoire Henri Dutilleux";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta -->
-    <title>{title ? `${title} — ${siteName}` : siteName}</title>
+    <title>{title}</title>
     <meta name="description" content={description}>
 		<meta name="generator" content={Astro.generator}>
     <meta name="robots" content="index, follow">
