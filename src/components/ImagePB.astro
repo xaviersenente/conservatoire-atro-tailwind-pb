@@ -1,5 +1,5 @@
 ---
-// on n'utilise pas ici les composant Images ou Picture qui génèrent des poblèmes lors de la publication sur Netlify
+import { Picture } from 'astro:assets';
 import { pb } from "../js/backend.mjs";
 const { record, field = "imgUrl", alt, classPicture, classImg, thumb = "1024x1024" } = Astro.props;
 
@@ -7,7 +7,12 @@ const imageUrl = record?.[field] ? pb.files.getURL(record, record[field], { thum
 ---
 
 {imageUrl && (
-  <picture class={ classPicture }>
-    <img class={classImg} src={imageUrl} alt={alt || "Image"} loading="lazy" decoding="async"/>
-  </picture>
+  <Picture 
+    pictureAttributes={{ class: classPicture }} 
+    class={classImg}
+    inferSize={true} 
+    formats={['avif', 'webp']} 
+    src={imageUrl} 
+    alt={alt || "Image"} 
+  />
 )}
