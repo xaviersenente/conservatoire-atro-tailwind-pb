@@ -15,4 +15,7 @@ export default defineConfig({
 
   experimental: { svg: true },
   adapter: netlify(),
+  image: {
+    domains: ["https://conservatoire.pockethost.io/"],
+  },
 });
