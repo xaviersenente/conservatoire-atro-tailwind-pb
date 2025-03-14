@@ -6,13 +6,13 @@ import '@fontsource-variable/mulish/wght-italic.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const { description, image = "/screenshot.jpg" } = Astro.props;
+const { title, description, image = "/screenshot.jpg" } = Astro.props;
 
 const baseUrl = "https://www.example.com";
 const pageUrl = `${baseUrl}${Astro.url.pathname}`;
 const siteName = "Conservatoire Henri Dutilleux";
 
-const title = Astro.url.pathname === "/" ? siteName : `${Astro.props.title} — ${siteName}`;
+const titleHead = Astro.url.pathname === "/" ? siteName : `${title} — ${siteName}`;
 ---
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,13 +22,13 @@ const title = Astro.url.pathname === "/" ? siteName : `${Astro.props.title} — 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta -->
-    <title>{title}</title>
+    <title>{titleHead}</title>
     <meta name="description" content={description}>
 		<meta name="generator" content={Astro.generator}>
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph (Facebook, LinkedIn, etc.) -->
-    <meta property="og:title" content={title}>
+    <meta property="og:title" content={titleHead}>
     <meta property="og:description" content={description}>
     <meta property="og:image" content={image}>
     <meta property="og:url" content={pageUrl}>
@@ -37,7 +37,7 @@ const title = Astro.url.pathname === "/" ? siteName : `${Astro.props.title} — 
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content={title}>
+    <meta name="twitter:title" content={titleHead}>
     <meta name="twitter:description" content={description}>
     <meta name="twitter:image" content={image}>
     <meta name="twitter:site" content="@yourtwitterhandle">
