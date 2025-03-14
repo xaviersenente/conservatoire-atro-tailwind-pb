@@ -3,14 +3,11 @@
 import { pb } from "../js/backend.mjs";
 const { record, field = "imgUrl", alt, classPicture, classImg, thumb = "1024x1024" } = Astro.props;
 
-const originalUrl = record?.[field] ? pb.files.getURL(record, record[field], { thumb }) : null;
-const netlifyUrl = originalUrl ? `/images/${record[field]}?thumb=${thumb}` : null;
+const imageUrl = record?.[field] ? pb.files.getURL(record, record[field], { thumb }) : null;
 ---
 
-{netlifyUrl && (
+{imageUrl && (
   <picture class={ classPicture }>
-    <source srcset={`${netlifyUrl}&fm=avif`} type="image/avif" />
-    <source srcset={`${netlifyUrl}&fm=webp`} type="image/webp" />
-    <img class={classImg} src={netlifyUrl} alt={alt || "Image"} loading="lazy" decoding="async"/>
+    <img class={classImg} src={imageUrl} alt={alt || "Image"} loading="lazy" decoding="async"/>
   </picture>
 )}
