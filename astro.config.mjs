@@ -17,7 +17,7 @@ export default defineConfig({
   adapter: netlify({
     imageCDN: false,
   }),
-  image: {
-    domains: ["https://conservatoire.pockethost.io/"],
-  },
+  // image: {
+  //   domains: ["https://conservatoire.pockethost.io/"],
+  // },
 });
