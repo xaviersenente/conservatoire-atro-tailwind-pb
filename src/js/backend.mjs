@@ -2,7 +2,7 @@
 import PocketBase from "pocketbase";
 
 // Définition de l'URL de l'instance PocketBase
-const POCKETBASE_URL = "https://conservatoire.pockethost.io/";
+const POCKETBASE_URL = import.meta.env.POCKETBASE_URL;
 
 // Création de l'instance PocketBase avec l'URL définie plus haut
 const pb = new PocketBase(POCKETBASE_URL);

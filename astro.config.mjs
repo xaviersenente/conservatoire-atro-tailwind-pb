@@ -6,14 +6,21 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
+  // Utilise le rendu côté serveur (SSR) pour toutes les pages par défaut, générant toujours un site rendu par le serveur.
+  // https://docs.astro.build/fr/reference/configuration-reference/#output
   output: "server",
-
+  // Ajout du plugin pour tailwind
   vite: {
     plugins: [tailwindcss()],
   },
-
+  // Activation de la prise en charge expérimentale des fichiers SVG
+  // https://docs.astro.build/fr/reference/experimental-flags/svg/
   experimental: { svg: true },
+  // Utilisation de l'adaptateur Netlify pour le déploiement
+  // https://docs.astro.build/fr/guides/integrations-guide/netlify/
   adapter: netlify(),
+  // Pour que les images de Pocketbase s'affichent bien une fois le site hébergé sur Netlify
+  // https://docs.astro.build/fr/guides/integrations-guide/netlify/#support-du-cdn-dimages-netlify
   image: {
     domains: ["conservatoire.pockethost.io"],
   },
