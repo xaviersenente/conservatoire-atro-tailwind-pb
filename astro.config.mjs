@@ -13,15 +13,17 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  // Activation de la prise en charge expérimentale des fichiers SVG
-  // https://docs.astro.build/fr/reference/experimental-flags/svg/
-  experimental: { svg: true },
   // Utilisation de l'adaptateur Netlify pour le déploiement
   // https://docs.astro.build/fr/guides/integrations-guide/netlify/
   adapter: netlify(),
   // Pour que les images de Pocketbase s'affichent bien une fois le site hébergé sur Netlify
   // https://docs.astro.build/fr/guides/integrations-guide/netlify/#support-du-cdn-dimages-netlify
   image: {
-    domains: ["conservatoire.pockethost.io"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.pockethost.io",
+      },
+    ],
   },
 });
