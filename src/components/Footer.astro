@@ -5,6 +5,13 @@ import IconFacebook from '../assets/icones/icon_facebook.svg';
 import IconInstagram from '../assets/icones/icon_instagram.svg';
 import IconTwitter from '../assets/icones/icon_twitter.svg';
 import IconYoutube from '../assets/icones/icon_youtube.svg';
+
+const socialLinks = [
+  { url: 'https://facebook.com', label: 'facebook', Icon: IconFacebook },
+  { url: 'https://instagram.com', label: 'instagram', Icon: IconInstagram },
+  { url: 'https://twitter.com', label: 'twitter', Icon: IconTwitter },
+  { url: 'https://youtube.com', label: 'youtube', Icon: IconYoutube },
+];
 ---
 
 <footer class="grille space-y-6 text-sm bg-stone-900 py-16 px-6 text-white lg:space-y-0">
@@ -36,26 +43,13 @@ import IconYoutube from '../assets/icones/icon_youtube.svg';
   <div class="space-y-3 lg:col-span-3 lg:col-start-10">
     <h3 class="uppercase text-sm tracking-wide text-stone-400">Nous suivre</h3>
     <ul class="flex gap-4">
-      <li>
-        <a href="https://facebook.com" aria-label="facebook">
-          <IconFacebook class="fill-white"/>
-        </a>
-      </li>
-      <li>
-        <a href="https://instagram.com" aria-label="instagram">
-          <IconInstagram class="fill-white"/>
-        </a>
-      </li>
-      <li>
-        <a href="https://twitter.com" aria-label="twitter">
-          <IconTwitter class="fill-white"/>
-        </a>
-      </li>
-      <li>
-        <a href="https://youtube.com" aria-label="youtube">
-          <IconYoutube class="fill-white"/>
-        </a>
-      </li>
+      {socialLinks.map(({ url, label, Icon }) => (
+        <li>
+          <a href={url} aria-label={label}>
+            <Icon class="fill-white"/>
+          </a>
+        </li>
+      ))}
     </ul>
   </div>
 </footer>

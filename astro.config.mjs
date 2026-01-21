@@ -3,9 +3,11 @@ import { defineConfig } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 import netlify from "@astrojs/netlify";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://www.example.com",
   // Utilise le rendu côté serveur (SSR) pour toutes les pages par défaut, générant toujours un site rendu par le serveur.
   // https://docs.astro.build/fr/reference/configuration-reference/#output
   output: "server",
@@ -16,6 +18,8 @@ export default defineConfig({
   // Utilisation de l'adaptateur Netlify pour le déploiement
   // https://docs.astro.build/fr/guides/integrations-guide/netlify/
   adapter: netlify(),
+  // Intégrations
+  integrations: [sitemap()],
   // Pour que les images de Pocketbase s'affichent bien une fois le site hébergé sur Netlify
   // https://docs.astro.build/fr/guides/integrations-guide/netlify/#support-du-cdn-dimages-netlify
   image: {
