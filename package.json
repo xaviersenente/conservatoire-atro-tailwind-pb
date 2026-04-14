@@ -6,16 +6,27 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "pb:serve": "cd pocketbase && ./pocketbase serve",
+    "dev:all": "concurrently \"npm run dev\" \"npm run pb:serve\"",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.6.4",
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/netlify": "^7.0.6",
+    "@astrojs/sitemap": "^3.7.2",
     "@fontsource-variable/mulish": "^5.2.8",
     "@fontsource/space-mono": "^5.2.9",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.11",
-    "pocketbase": "^0.26.6",
-    "tailwindcss": "^4.1.18"
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.6",
+    "pocketbase": "^0.26.8",
+    "tailwindcss": "^4.2.2",
+    "url-slug": "^5.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "prettier": "^3.8.2",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "0.7.2"
   }
 }
